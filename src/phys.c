@@ -3,6 +3,13 @@
 #include <gb/sgb.h>
 #include <stdio.h>
 
+#include "../res/collisions_map.h"
+#include "../res/collisions_tiles.h"
+#include "../res/wall_map.h"
+#include "../res/wall_tiles.h"
+
+const char blankmap[1] = {0x00};
+
 UINT8 sprite_data[] = {
     0x3C, 0x3C, 0x42, 0x7E, 0x99, 0xFF, 0xA9, 0xFF, 0x89, 0xFF, 0x89, 0xFF, 0x42, 0x7E, 0x3C, 0x3C,
     0x3C, 0x3C, 0x42, 0x7E, 0xB9, 0xFF, 0x89, 0xFF, 0x91, 0xFF, 0xB9, 0xFF, 0x42, 0x7E, 0x3C, 0x3C,
@@ -21,7 +28,11 @@ UINT8 Jump;
 // main funxction
 void main(void) {
     // init palettes
-    BGP_REG = OBP0_REG = OBP1_REG = 0xE4;
+    OBP0_REG = OBP1_REG = 0xE4;
+    BGP_REG = 0x1B;
+
+    set_bkg_data(0, WALL_TILE_COUNT, WALL_TILE_DATA);
+    set_bkg_tiles(0, 0, 20, 18, WALL_MAP_DATA);
 
     // load tile data into VRAM
     set_sprite_data(0, 4, sprite_data);

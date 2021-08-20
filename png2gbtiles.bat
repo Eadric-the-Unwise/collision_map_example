@@ -1,0 +1,2 @@
+@REM C:\c_code\projects\detective\detective_metasprite\build\gb_map_converter\gb_map_converter.exe -i .\res\wall.png -n wall -o .\res\
+C:\c_code\projects\detective\detective_metasprite\build\gb_map_converter\gb_map_converter.exe -i .\res\collisions.png -n collisions -o .\res\
